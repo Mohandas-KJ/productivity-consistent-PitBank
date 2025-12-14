@@ -6,12 +6,14 @@ import java.io.*;
 
 public class Bank {
 	
+	//General Variables
 	String usr = System.getProperty("user.name");
 	String Date_t = getDate();
 	String location = "C:/Users/" + usr + "/Documents/PitBank/";
 	File target = new File(location);
 	File log = new File(target, Date_t + ".txt");
 	
+	//Used to get System Date
 	public String getDate() {
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -19,6 +21,7 @@ public class Bank {
 		return today.format(dtf);
 	}
 	
+	//Used to create Directory and Statement File
 	public void creatLog() {
 		
 		
@@ -33,7 +36,6 @@ public class Bank {
 		try {
 			if(log.createNewFile()) {
 				WriteHeader();
-				System.out.println("Statement Created at: " + target);
 			}
 		} catch (IOException e) {
 			
@@ -41,6 +43,7 @@ public class Bank {
 		}
 	}
 	
+	//Used to create Header on start
 	void WriteHeader() throws IOException {
 		FileWriter fw = new FileWriter(log, true);
 		fw.write("PIT BANK STATEMENT\n");
@@ -48,4 +51,70 @@ public class Bank {
 		fw.flush();
 		fw.close();
 	}
+	
+	//Used to get the current Time Block(Pit Stop from the file)
+	public int getPitStatus() {
+		int pitStop = 0;
+		try {
+			FileReader fr = new FileReader(log);
+			BufferedReader bf = new BufferedReader(fr);
+			String line;
+			
+			
+			while((line = bf.readLine()) != null) {
+				if(line.startsWith("PIT STOP")) {
+					pitStop = Integer.parseInt(line.split(" ")[2]);
+				}
+			}
+			
+			bf.close();
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		return pitStop+1;
+	}
+	
+	public void WriteStatement(int currentPit, String Domain, String Note, String tb) {
+		int MILLION = 1_000_000;
+		int[] locker = {10*MILLION,5*MILLION,3*MILLION,1*MILLION};
+		
+		try {
+			FileWriter fw = new FileWriter(log,true);
+			
+			fw.write("--------------------------\n");
+			fw.write("PIT STOP " + currentPit + "\n");
+			fw.write("Domain: " + Domain + "\n");
+			fw.write("Lap Time: " + tb + "\n");
+			fw.write("Notes: " + Note != null ? Note:"none" + "\n");
+			
+			if(Domain.toLowerCase().equals("cybersecurity")) {
+				fw.write("Sponsor Payout: $" + locker[0] + "\n");
+			}
+			else if(Domain.toLowerCase().equals("android kotlin")) {
+				fw.write("Sponsor Payout: $" + locker[2] + "\n");
+			}
+			else if(Domain.toLowerCase().equals("f1 prediction")) {
+				fw.write("Sponsor Payout: $" + locker[2] + "\n");
+			}
+			else if(Domain.toLowerCase().equals("dsa")) {
+				fw.write("Sponsor Payout: $" + locker[3] + "\n");
+			}
+			else if(Domain.toLowerCase().equals("stock market")) {
+				fw.write("Sponsor Payout: $" + locker[1] + "\n");
+			}
+			else if(Domain.toLowerCase().equals("typescript")) {
+				fw.write("Sponsor Payout: $" + locker[3] + "\n");
+			}
+			fw.write("--------------------------\n\n");
+			fw.close();
+			
+			System.out.println("Statement Created at: " + log);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
 }
