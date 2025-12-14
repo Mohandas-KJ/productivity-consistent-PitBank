@@ -1,0 +1,38 @@
+# =========================
+# Compiled output
+# =========================
+bin/
+out/
+target/
+
+# =========================
+# Eclipse specific files
+# =========================
+.classpath
+.project
+.settings/
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs & temp files
+# =========================
+*.log
+*.tmp
+*.swp
+
+# =========================
+# IDE caches (safe to ignore)
+# =========================
+*.iml
+.idea/
+.vscode/
+
+# =========================
+# JVM crash logs
+# =========================
+hs_err_pid*
