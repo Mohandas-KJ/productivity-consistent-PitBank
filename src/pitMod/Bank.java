@@ -87,7 +87,7 @@ public class Bank {
 			fw.write("PIT STOP " + currentPit + "\n");
 			fw.write("Domain: " + Domain + "\n");
 			fw.write("Lap Time: " + tb + "\n");
-			fw.write("Notes: " + Note != null ? Note:"none" + "\n");
+			fw.write("Notes: " + Note != null ? Note + "\n":"none" + "\n");
 			
 			if(Domain.toLowerCase().equals("cybersecurity")) {
 				fw.write("Sponsor Payout: $" + locker[0] + "\n");
