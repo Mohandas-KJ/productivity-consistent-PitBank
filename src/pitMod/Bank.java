@@ -77,8 +77,7 @@ public class Bank {
 	}
 	
 	public void WriteStatement(int currentPit, String Domain, String Note, String tb) {
-		int MILLION = 1_000_000;
-		int[] locker = {10*MILLION,5*MILLION,3*MILLION,1*MILLION};
+		int[] locker = {10,5,3,1};
 		
 		try {
 			FileWriter fw = new FileWriter(log,true);
@@ -90,22 +89,22 @@ public class Bank {
 			fw.write("Notes: " + Note != null ? Note + "\n":"none" + "\n");
 			
 			if(Domain.toLowerCase().equals("cybersecurity")) {
-				fw.write("Sponsor Payout: $" + locker[0] + "\n");
+				fw.write("Sponsor Payout: $" + locker[0] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("android kotlin")) {
-				fw.write("Sponsor Payout: $" + locker[2] + "\n");
+				fw.write("Sponsor Payout: $" + locker[2] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("f1 prediction")) {
-				fw.write("Sponsor Payout: $" + locker[2] + "\n");
+				fw.write("Sponsor Payout: $" + locker[2] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("dsa")) {
-				fw.write("Sponsor Payout: $" + locker[3] + "\n");
+				fw.write("Sponsor Payout: $" + locker[3] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("stock market")) {
-				fw.write("Sponsor Payout: $" + locker[1] + "\n");
+				fw.write("Sponsor Payout: $" + locker[1] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("typescript")) {
-				fw.write("Sponsor Payout: $" + locker[3] + "\n");
+				fw.write("Sponsor Payout: $" + locker[3] + "M\n");
 			}
 			fw.write("--------------------------\n\n");
 			fw.close();
