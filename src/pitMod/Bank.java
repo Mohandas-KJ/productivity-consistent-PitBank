@@ -86,7 +86,7 @@ public class Bank {
 			fw.write("PIT STOP " + currentPit + "\n");
 			fw.write("Domain: " + Domain + "\n");
 			fw.write("Lap Time: " + tb + "\n");
-			fw.write("Notes: " + Note != null ? Note + "\n":"none" + "\n");
+			fw.write("Notes: " + (Note != null ? Note + "\n":"none" + "\n"));
 			
 			if(Domain.toLowerCase().equals("cybersecurity")) {
 				fw.write("Sponsor Payout: $" + locker[0] + "M\n");
@@ -104,6 +104,9 @@ public class Bank {
 				fw.write("Sponsor Payout: $" + locker[1] + "M\n");
 			}
 			else if(Domain.toLowerCase().equals("typescript")) {
+				fw.write("Sponsor Payout: $" + locker[3] + "M\n");
+			}
+			else {
 				fw.write("Sponsor Payout: $" + locker[3] + "M\n");
 			}
 			fw.write("--------------------------\n\n");
