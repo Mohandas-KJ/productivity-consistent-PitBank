@@ -128,7 +128,37 @@ public class Bank {
 		System.out.println("To Know more approach the GitHub page of Pit Bank Application");
 		System.out.println("\nCommands Supported:");
 		System.out.println("1. add [pitstop/statement/task/...] - Records the task and awards Sponsors");
-		System.out.println("2. calculate/get [total/task] - Returns the total Payout Today or Gives the Total Task Completed Correspondingly\n");
+		System.out.println("2. calculate [total/task] - Returns the total Payout Today or Gives the Total Task Completed Correspondingly\n");
+	}
+	
+	public int CalculateTotal() {
+		
+		int Total_Payout = 0;
+		
+		try {
+			
+			FileReader sp_reader = new FileReader(log);
+			BufferedReader bf_payout = new BufferedReader(sp_reader);
+			
+			String line;
+			
+			while((line = bf_payout.readLine()) != null) {
+				if(line.startsWith("Sponsor Payout")) {
+					String tmp = line.split("\\$")[1];
+					int temp_cal = Integer.parseInt(tmp.substring(0,tmp.length() - 1));
+					Total_Payout += temp_cal;
+				}
+			}
+			
+			return 0;
+		}
+		catch (IOException e) {
+			// TODO: handle exception
+		}
+		
+		return Total_Payout;
+		
+		
 	}
 	
 }

@@ -28,19 +28,29 @@ public class Application {
 		Bank bank = new Bank();
 		
 		do {
-			System.out.print(System.getProperty("user.name") + ">");
+			System.out.print("\n" + System.getProperty("user.name") + "> ");
 			String cmd = sc.nextLine();
 			
-			if(cmd.contains("add")) {
+			if(cmd.toLowerCase().contains("add")) {
 				System.out.println("\nAdd Task");
 				int currentPit = bank.getPitStatus();
 				getUserData(currentPit);
 				bank.WriteStatement(currentPit, Domain, Notes, LapTime);
 			}
-			else if(cmd.contains("help")) {
+			else if(cmd.toLowerCase().contains("help")) {
 				bank.helper();
 			}
-			else if(cmd.contains("exit")) {
+			else if(cmd.toLowerCase().contains("calculate") && cmd.toLowerCase().contains("total")) {
+				int Balance = bank.CalculateTotal();
+				
+				if(Balance != 0) {
+					System.out.println("Total Payout: $" + Balance + "M");
+				}
+				else {
+					System.out.println("No PayOut Yet! Keep Working");
+				}
+			}
+			else if(cmd.toLowerCase().contains("exit")) {
 				System.out.println("\n\nBye Bye!");
 				System.exit(0);
 			}
