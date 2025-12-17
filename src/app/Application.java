@@ -63,6 +63,9 @@ public class Application {
 			}
 			else if(cmd.toLowerCase().contains("exit")) {
 				System.out.println("\n\nBye Bye!");
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) { e.printStackTrace(); }
 				System.exit(0);
 			}
 			
