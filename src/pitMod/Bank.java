@@ -150,7 +150,6 @@ public class Bank {
 				}
 			}
 			
-			return 0;
 		}
 		catch (IOException e) {
 			// TODO: handle exception
