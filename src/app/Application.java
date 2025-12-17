@@ -48,6 +48,18 @@ public class Application {
 				else {
 					System.out.println("No PayOut Yet! Keep Working");
 				}
+			
+			}
+			else if(cmd.toLowerCase().contains("calculate") && cmd.toLowerCase().contains("task")) {
+				int com_task = bank.getPitStatus() -1;
+				
+				if(com_task != 0) {
+					System.out.println("Completed Task: " + com_task);
+					System.out.println("Keep Going!");
+				}
+				else {
+					System.out.println("No Tasks Yet! Keep Pushing!");
+				}
 			}
 			else if(cmd.toLowerCase().contains("exit")) {
 				System.out.println("\n\nBye Bye!");
