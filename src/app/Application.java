@@ -1,8 +1,7 @@
 package app;
 
 import java.util.Scanner;
-
-import pitMod.*;
+import pitMod.*; //Import of another package
 
 public class Application {
 	
