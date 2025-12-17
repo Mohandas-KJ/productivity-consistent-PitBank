@@ -76,6 +76,7 @@ public class Bank {
 		return pitStop+1;
 	}
 	
+	//Used to write the Logs to the File
 	public void WriteStatement(int currentPit, String Domain, String Note, String tb) {
 		int[] locker = {10,5,3,1};
 		
@@ -117,6 +118,17 @@ public class Bank {
 			
 			e.printStackTrace();
 		}
+	}
+	
+	public void helper() {
+		System.out.println("\nWecome to Help Assistant");
+		System.out.println("PIT BANK INC. 2025");
+		System.out.println("\nThis application is to encourage the people who wish to be disciplined in their own way.");
+		System.out.println("We\'re here to make you a Virtual Millionare. This application awards you Virtual Dollars for every Disciplined work");
+		System.out.println("To Know more approach the GitHub page of Pit Bank Application");
+		System.out.println("\nCommands Supported:");
+		System.out.println("1. add [pitstop/statement/task/...] - Records the task and awards Sponsors");
+		System.out.println("2. calculate/get [total/task] - Returns the total Payout Today or Gives the Total Task Completed Correspondingly\n");
 	}
 	
 }

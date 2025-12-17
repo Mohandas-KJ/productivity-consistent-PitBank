@@ -20,6 +20,34 @@ public class Application {
 		Notes = sc.nextLine();
 		
 	}
+	
+	public void CLIController() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Bank bank = new Bank();
+		
+		do {
+			System.out.print(System.getProperty("user.name") + ">");
+			String cmd = sc.nextLine();
+			
+			if(cmd.contains("add")) {
+				System.out.println("\nAdd Task");
+				int currentPit = bank.getPitStatus();
+				getUserData(currentPit);
+				bank.WriteStatement(currentPit, Domain, Notes, LapTime);
+			}
+			else if(cmd.contains("help")) {
+				bank.helper();
+			}
+			else if(cmd.contains("exit")) {
+				System.out.println("\n\nBye Bye!");
+				System.exit(0);
+			}
+			
+		}while(true);
+		
+	}
 
 	public static void main(String[] args) {
 		
@@ -32,10 +60,8 @@ public class Application {
 		ban.showBanner();
 		bank.creatLog();
 		
-		int currentPit = bank.getPitStatus();
-		app.getUserData(currentPit);
-		
-		bank.WriteStatement(currentPit, app.Domain, app.Notes, app.LapTime);
+		System.out.println("\n\nWelcome to Pit Bank CLI. If you need help run the help command");
+		app.CLIController();
 		
 		
 
